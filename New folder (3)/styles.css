@@ -1,0 +1,256 @@
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose:     #e8768a;
+    --blush:    #f5c6d0;
+    --cream:    #fdf6f0;
+    --mauve:    #c9778e;
+    --deep:     #7a2d42;
+    --gold:     #d4a96a;
+    --text:     #4a2030;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ── floating petals ── */
+  .petal {
+    position: fixed;
+    top: -40px;
+    font-size: 1.2rem;
+    animation: fall linear infinite;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(0)   rotate(0deg);   opacity: .6; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── page wrapper ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 28px 80px;
+  }
+
+  /* ── hero ── */
+  .hero {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeUp .9s ease both;
+  }
+  .hero-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
+    color: var(--mauve);
+    letter-spacing: .08em;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp .7s .2s ease forwards;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 8vw, 4.2rem);
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    opacity: 0;
+    animation: fadeUp .7s .4s ease forwards;
+  }
+  .hero-heart {
+    display: inline-block;
+    color: var(--rose);
+    animation: heartbeat 1.4s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15%      { transform: scale(1.28); }
+    30%      { transform: scale(1); }
+    45%      { transform: scale(1.15); }
+    60%      { transform: scale(1); }
+  }
+  .hero-from {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-top: 14px;
+    opacity: 0;
+    animation: fadeUp .7s .6s ease forwards;
+  }
+
+  /* ── divider ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 40px 0;
+    opacity: 0;
+    animation: fadeUp .7s .7s ease forwards;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--blush), transparent);
+  }
+  .divider span { color: var(--rose); font-size: 1.3rem; }
+
+  /* ── appreciation card ── */
+  .card {
+    background: white;
+    border: 1.5px solid var(--blush);
+    border-radius: 20px;
+    padding: 36px 38px;
+    margin-bottom: 36px;
+    box-shadow: 0 8px 40px rgba(200,100,130,.08);
+    opacity: 0;
+    animation: fadeUp .8s .8s ease forwards;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--blush);
+  }
+  .appreciate-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .appreciate-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .appreciate-list li .bullet {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--blush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .85rem;
+    margin-top: 1px;
+  }
+
+  /* ── letter ── */
+  .letter {
+    background: white;
+    border: 1.5px solid var(--blush);
+    border-radius: 20px;
+    padding: 42px 44px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(200,100,130,.08);
+    opacity: 0;
+    animation: fadeUp .8s 1s ease forwards;
+  }
+  .letter::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 10rem;
+    color: var(--blush);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .letter-salutation {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.45rem;
+    color: var(--rose);
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .letter-body {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+    color: #5a3040;
+  }
+  .letter-body p + p { margin-top: 16px; }
+  .letter-closing {
+    margin-top: 30px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--mauve);
+    text-align: right;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 52px;
+    opacity: 0;
+    animation: fadeUp .8s 1.2s ease forwards;
+  }
+  .footer-hearts {
+    font-size: 1.8rem;
+    letter-spacing: .2em;
+    animation: heartbeat 1.8s ease-in-out infinite;
+    display: inline-block;
+  }
+  .footer-blessing {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-top: 12px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── corner ornaments ── */
+  .ornament {
+    position: fixed;
+    font-size: 2.5rem;
+    opacity: .18;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ornament.tl { top: 16px;  left: 16px; }
+  .ornament.tr { top: 16px;  right: 16px; transform: scaleX(-1); }
+  .ornament.bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+  .ornament.br { bottom: 16px; right: 16px; transform: scale(-1,-1); }
+
+  @media (max-width: 520px) {
+    .card, .letter { padding: 26px 22px; }
+    .letter::before { font-size: 7rem; }
+  }
